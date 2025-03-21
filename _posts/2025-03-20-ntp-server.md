@@ -1,7 +1,8 @@
 ---
-title: Running NTP in 3CX systems
-date: 2025-03-20 00:01:02 +0500
+title: "Running NTP in 3CX systems"
+date: 2025-03-20 00:00:00 +0500
 categories: [Guides, 3CX]
+tags: [A]
 ---
 
 # **Setting up NTP** 
