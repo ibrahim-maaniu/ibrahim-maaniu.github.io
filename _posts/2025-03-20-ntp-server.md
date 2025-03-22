@@ -2,7 +2,7 @@
 title: "Running NTP in 3CX systems"
 date: 2025-03-20 00:00:00 +0500
 categories: [Guides, 3CX]
-tags: [A]
+tags: [3CX, Debian, Windows]
 ---
 
 # **Setting up NTP** 
@@ -64,23 +64,28 @@ nft list ruleset > /etc/nftables.conf
 ```
 
 ## **Windows**
-```pwsh
+
+### *Enable the NTP server*
+
+```shell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\w32time\TimeProviders\NtpServer" -Name "Enabled" -Value 1
 ```
 
-Make the AnnounceFlags 5
-```pwsh
+### *Make the AnnounceFlags 5*
+
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\services\W32Time\Config" -Name "AnnounceFlags" -Value 5
 ```
 
-Restart NtpServer
+### *Restart the windows time service to start with the new changes*
+
 ```pwsh
 Restart-Service w32Time
 ```
 
-If firewall is running allow NTP Port:
+### *If firewall is running allow NTP Port:*
 
-``` pwsh
+```pwsh
 New-NetFirewallRule `
 -Name "NTP Server Port" `
 -DisplayName "ntp-server" `
