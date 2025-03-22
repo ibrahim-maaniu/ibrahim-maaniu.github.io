@@ -1,11 +1,11 @@
 ---
-title: "Install 3CX in a clean Debian system"
+title: "Install 3CX v20 in a clean Debian system"
 date: 2025-03-20 00:00:00 +0500
 categories: [Guides, 3CX]
 tags: [3CX, Debian]
 ---
 
-# **Guide for installing 3CX in a clean Debain install**
+# **Guide for installing 3CX v20 in a clean Debain install**
 
 > Its pretty straight forward if you know how linux distro's work. Add package manager source and install package.
 > 
@@ -52,7 +52,7 @@ If that does not start the Wizard type in `/usr/sbin/3CXWizard --cleanup`.
 #### **Apt Update error: `Mirror sync in progress?`**
 Most of what I saw searching through online for quick fixes on this was, "Just wait a few minutes or hours and try again."
 
-Didn't really have time to just wait for that to work. So went around checking ways. Found one even though I had to put them together.
+Waited 20 minutes before trying to update apt sources again, did not work. And then waited 12+ hours before trying again. Did not work. So the method I came up with was to download the package and install it manually.
 
 Cooked up a oneliner just for this issue:
 ```bash

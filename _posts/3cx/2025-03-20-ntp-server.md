@@ -13,21 +13,41 @@ Some customers prioritize strict network security, restricting internet access t
 
 If their network devices do not support an internal NTP server, setting up an NTP service on the same system running 3CX can resolve this issue.
 
+## Requirements
+
+- Root access
+- Little know-how of how the Linux terminal works
+- Active Internet connection
+
+First login as root user.
+
 ## **Debian**
 
 ### *Install ntp*
 
-First update apt: `apt update`
+First update apt 
+```sh
+apt update
+```
 
-then install ntp: `apt install ntp`
+then install ntp
+```sh
+apt install ntp
+```
 
 ### *Verify NTP is running*
 
-Check if ntp is active: `systemctl status ntp.service`
+Check if ntp is active 
+```sh
+systemctl status ntp.service
+```
 
 It should show as `Active: active`
 
-If not start the service: `systemctl start ntp.service`
+If not start the service
+```sh
+systemctl start ntp.service
+```
 
 ### *Configure ntp*
 
@@ -37,7 +57,7 @@ Either delete or comment all of the `pool #.debian.pool.ntp.org iburst`  lines
 
 Get your country's or region's pool domain link from [NTP pool project](https://www.ntppool.org/en)
 
-Add the ntp pool domain name of your choosing <ntp.poo.>
+Add the ntp pool domain name of your choosing <ntp.pool>
 
 ```sh
 pool <0.ntp.pool> iburst
@@ -67,7 +87,7 @@ nft list ruleset > /etc/nftables.conf
 
 ### *Enable the NTP server*
 
-```shell
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\w32time\TimeProviders\NtpServer" -Name "Enabled" -Value 1
 ```
 
@@ -79,13 +99,13 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\services\W32Time\Config" 
 
 ### *Restart the windows time service to start with the new changes*
 
-```pwsh
+```powershell
 Restart-Service w32Time
 ```
 
 ### *If firewall is running allow NTP Port:*
 
-```pwsh
+```powershell
 New-NetFirewallRule `
 -Name "NTP Server Port" `
 -DisplayName "ntp-server" `
